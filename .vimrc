@@ -13,14 +13,12 @@ Plugin 'junegunn/fzf' " Fuzzy Finder
 Plugin 'preservim/nerdcommenter' " Comment toggler
 Plugin 'mhartington/oceanic-next'
 Plugin 'sheerun/vim-polyglot' " Extended syntax highlighting (+Haskell)
-Plugin 'zxqfl/tabnine-vim' " Autocompleter
+Plugin 'neoclide/coc.nvim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-surround' " Surround
 Plugin 'preservim/nerdtree' " File tree
-Plugin 'neovimhaskell/haskell-vim'
-Plugin 'tpop/vim-fugitive' " Git support with :G
-Plugin 'airblade/vim-gitgutter' " Git diff markers
+Plugin 'neovimhaskell/haskell-vim' " Haskell syntax highlighting
 
 call vundle#end()            " required
 
@@ -60,6 +58,38 @@ set hlsearch " highlight matches
 set gdefault " use the `g` flag by default.
 
 set number " Turn on line numbers
+
+set colorcolumn=120
+
+" Coc.vim stuff
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
+if has("patch-8.1.1564")
+"       Recently vim can merge signcolumn and number column into one
+    set signcolumn=number
+else
+    set signcolumn=yes
+endif
+
+" Tab to trigger completion with characters ahead
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+      let col = col('.') - 1
+        return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" <c-space> to trigger completion
+if has('nvim')
+      inoremap <silent><expr> <c-space> coc#refresh()
+  else
+        inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 " allow the cursor to go anywhere in visual block mode.
 set virtualedit+=block
