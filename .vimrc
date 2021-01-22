@@ -19,6 +19,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-surround' " Surround
 Plugin 'preservim/nerdtree' " File tree
 Plugin 'neovimhaskell/haskell-vim' " Haskell syntax highlighting
+Plugin 'jiangmiao/auto-pairs' " Bracket pairing
 
 call vundle#end()            " required
 
@@ -28,6 +29,8 @@ filetype plugin on " Needed for nerdcommenter
 " Key Mappings
 map <C-o> :NERDTree<CR>
 map ; :Files<CR>
+"This unsets the "last search pattern" register by hitting return
+nnoremap <CR> :noh<CR><CR>
 
 " Turn settings back on
 syntax on " Syntax highlighting
@@ -72,6 +75,9 @@ else
     set signcolumn=yes
 endif
 
+" Maps <cr> to confirm when completion popup is visible
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
 " Tab to trigger completion with characters ahead
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -84,12 +90,9 @@ function! s:check_back_space() abort
         return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" <c-space> to trigger completion
-if has('nvim')
-      inoremap <silent><expr> <c-space> coc#refresh()
-  else
-        inoremap <silent><expr> <c-@> coc#refresh()
-endif
+" Use <Tab> and <Shift-Tab> to navigate completion list
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " allow the cursor to go anywhere in visual block mode.
 set virtualedit+=block
