@@ -32,6 +32,8 @@ map ; :Files<CR>
 "This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
 
+nnoremap <F7> gg=G <bar> :%s/\s\+$//e<CR>
+
 " Turn settings back on
 syntax on " Syntax highlighting
 set tabstop=4
