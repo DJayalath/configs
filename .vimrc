@@ -10,7 +10,7 @@ Plugin 'VundleVim/Vundle.vim'
 " All of your Plugins must be added before the following line
 
 Plugin 'junegunn/fzf' " Fuzzy Finder
-Plugin 'preservim/nerdcommenter' " Comment toggler
+Plugin 'tpope/vim-commentary' " Comment toggler
 Plugin 'mhartington/oceanic-next'
 Plugin 'sheerun/vim-polyglot' " Extended syntax highlighting (+Haskell)
 Plugin 'neoclide/coc.nvim'
