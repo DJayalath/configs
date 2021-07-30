@@ -21,10 +21,12 @@ Plug 'tpope/vim-commentary'
 
 call plug#end()
 
+syntax on
+colo molokai
+set autoindent
+
 " Highlight character past 80-char line
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
 
-syntax on
-colo molokai
-set autoindent
+
