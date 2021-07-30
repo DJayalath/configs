@@ -8,6 +8,9 @@ endif
 " Call :PlugInstall to install plugins
 call plug#begin('~/.vim/plugged')
 
+" Sensible vim default configuration
+Plug 'tpope/vim-sensible'
+
 " Colorschemes pack
 Plug 'flazz/vim-colorschemes'
 
@@ -17,6 +20,10 @@ Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-commentary'
 
 call plug#end()
+
+" Highlight character past 80-char line
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
 
 syntax on
 colo molokai
