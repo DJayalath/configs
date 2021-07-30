@@ -5,7 +5,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" Plugins
+" Call :PlugInstall to install plugins
 call plug#begin('~/.vim/plugged')
 
 " Colorschemes pack
