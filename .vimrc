@@ -12,14 +12,25 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 
 " Colorschemes pack
-Plug 'flazz/vim-colorschemes'
+Plug 'rafi/awesome-vim-colorschemes'
 
 " gc in visual mode to comment out selection
 " gcc to comment out a line in normal mode
 " gc toggles, so uncomments if already commented
 Plug 'tpope/vim-commentary'
 
+" Airline statusbar
+" Open new buffer with :e <filepath>
+" Switch buffers with :b <name> (use tab-complete) or :b <number>
+" Split buffer horizontally with :split
+" Vertically with :vsplit
+" ctrl-w then h/j/k/l switches split side
+Plug 'vim-airline/vim-airline'
+
 call plug#end()
+
+" Display all buffers when only one tab opened
+let g:airline#extensions#tabline#enabled = 1
 
 syntax on
 colo molokai
